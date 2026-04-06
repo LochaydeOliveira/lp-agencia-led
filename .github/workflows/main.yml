@@ -3,7 +3,7 @@ name: Deploy para Alwaysdata
 on:
   push:
     branches:
-      - main
+      - main  # Certifique-se de que sua branch principal se chama 'main'
 
 jobs:
   deploy:
@@ -12,14 +12,14 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Deploy via SFTP
+      - name: Deploy via SFTP (Porta 22)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          # KEY (Parâmetro) : VALUE (Variável/Secret)
           server: ${{ secrets.ALWAYSDATA_SERVER }}
           username: ${{ secrets.ALWAYSDATA_USER }}
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           port: 22
-          local_path: './'              # Sobe tudo da pasta atual
-          remote_path: 'loxaid.alwaysdata.net/' # Destino final
+          local_path: './'
+          remote_path: 'www/'
           sftp_only: true
+          delete_remote_files: false
