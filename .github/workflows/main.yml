@@ -15,10 +15,9 @@ jobs:
       - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ftp-loxaid.alwaysdata.net
+          server: ${{ secrets.ALWAYSDATA_SERVER }}
           username: ${{ secrets.ALWAYSDATA_USER }}
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
-          # Ajuste o caminho abaixo para a pasta do seu site
-          server-dir: www/loxaid.alwaysdata.net/agencia-led
+          server-dir: www/loxaid.alwaysdata.net/ 
           protocol: sftp
           port: 22
