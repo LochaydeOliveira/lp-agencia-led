@@ -21,5 +21,5 @@ jobs:
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           port: 22
           local_path: './'              # Sobe tudo da pasta atual
-          remote_path: '/www/loxaid.alwaysdata.net/' # Destino final
+          remote_path: 'loxaid.alwaysdata.net/' # Destino final
           sftp_only: true
