@@ -12,7 +12,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Deploy via SFTP (Porta 22)
+      - name: Deploy via SFTP (Para subpasta)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.ALWAYSDATA_SERVER }}
@@ -20,6 +20,7 @@ jobs:
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           port: 22
           local_path: './'
-          remote_path: 'www/'
+          # Aqui é onde a mágica acontece:
+          remote_path: 'www/agencia-led/' 
           sftp_only: true
           delete_remote_files: false
