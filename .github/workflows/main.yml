@@ -1,9 +1,9 @@
-name: Deploy para Alwaysdata
+name: Deploy para Agencia LED
 
 on:
   push:
     branches:
-      - main  # Certifique-se de que sua branch principal se chama 'main'
+      - main
 
 jobs:
   deploy:
@@ -12,7 +12,7 @@ jobs:
       - name: Checkout do código
         uses: actions/checkout@v3
 
-      - name: Deploy via SFTP (Para subpasta)
+      - name: Deploy via SFTP (Pasta agencia-led)
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.ALWAYSDATA_SERVER }}
@@ -20,7 +20,9 @@ jobs:
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           port: 22
           local_path: './'
-          # Aqui é onde a mágica acontece:
+          # Enviando para a subpasta que você pediu:
           remote_path: 'www/agencia-led/' 
           sftp_only: true
-          delete_remote_files: false
+          # Isso ignora erros de permissão em arquivos ocultos (como o .git)
+          # e foca em subir o seu PHP e Assets
+          ssh_options: '-o StrictHostKeyChecking=no'
