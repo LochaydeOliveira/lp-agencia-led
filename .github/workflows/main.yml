@@ -19,5 +19,5 @@ jobs:
           username: ${{ secrets.ALWAYSDATA_USER }}
           password: ${{ secrets.ALWAYSDATA_PASSWORD }}
           server-dir: www/loxaid.alwaysdata.net/www
-          protocol: sftp
-          port: 22
+          protocol: ftp
+          port: 21
