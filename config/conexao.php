@@ -3,10 +3,10 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$host = 'localhost';
-$db   = 'paymen58_site_led';
-$user = 'paymen58';
-$pass = 'u4q7+B6ly)obP_gxN9sNe';
+$host = 'ftp-loxaid.alwaysdata.net';
+$db   = 'loxaid_agencia_led';
+$user = 'loxaid';
+$pass = 'Q2fcMq*XZ5S*t35';
 $charset = 'utf8mb4';
 
 $options = [

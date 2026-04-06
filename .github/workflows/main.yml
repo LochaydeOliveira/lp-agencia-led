@@ -1,19 +1,24 @@
+name: Deploy para Alwaysdata
+
 on:
-    push:
-      branches:
-        - main  
-name: 🚀 Deploy website on push 
+  push:
+    branches:
+      - main  # Ou o nome da sua branch principal
+
 jobs:
-    web-deploy:
-      name: 🎉 Deploy
-      runs-on: ubuntu-latest
-      steps:
-        - name: 🚚 Get latest code
-          uses: actions/checkout@v2
-  
-        - name: 📂 Sync files
-          uses: SamKirkland/FTP-Deploy-Action@4.0.0
-          with:
-            server: ${{ secrets.FTP_SERVER }}
-            username: ${{ secrets.FTP_USER }}
-            password: ${{ secrets.FTP_PASSWORD }}        
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Deploy via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp-loxaid.alwaysdata.net
+          username: ${{ secrets.ALWAYSDATA_USER }}
+          password: ${{ secrets.ALWAYSDATA_PASSWORD }}
+          # Ajuste o caminho abaixo para a pasta do seu site
+          server-dir: www/loxaid.alwaysdata.net/agencia-led
+          protocol: sftp
+          port: 22
